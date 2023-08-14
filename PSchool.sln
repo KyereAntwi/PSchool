@@ -3,10 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1706.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSchool.Domain", "PSchool.Domain\PSchool.Domain.csproj", "{29B28C89-211D-4967-BF4E-7424940B976C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSchool.Application", "PSchool.Application\PSchool.Application.csproj", "{49463419-78A2-4299-9DE0-0F109D0617C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSchool.Persistence", "PSchool.Persistence\PSchool.Persistence.csproj", "{0153DEE2-3A31-4012-8DE0-FFC03FD88676}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29B28C89-211D-4967-BF4E-7424940B976C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29B28C89-211D-4967-BF4E-7424940B976C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29B28C89-211D-4967-BF4E-7424940B976C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29B28C89-211D-4967-BF4E-7424940B976C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49463419-78A2-4299-9DE0-0F109D0617C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49463419-78A2-4299-9DE0-0F109D0617C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49463419-78A2-4299-9DE0-0F109D0617C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49463419-78A2-4299-9DE0-0F109D0617C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0153DEE2-3A31-4012-8DE0-FFC03FD88676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0153DEE2-3A31-4012-8DE0-FFC03FD88676}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0153DEE2-3A31-4012-8DE0-FFC03FD88676}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0153DEE2-3A31-4012-8DE0-FFC03FD88676}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
