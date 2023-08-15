@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSchool.Presentation.WepApi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSchool.Presentation.Controllers", "PSchool.Presentation.Controllers\PSchool.Presentation.Controllers.csproj", "{DF033851-C411-408F-9107-916CE84CE6E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSchool.Presentation.App", "PSchool.Presentation.App\PSchool.Presentation.App.csproj", "{81A5B86E-9256-416D-9AA7-8B549A4701DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DF033851-C411-408F-9107-916CE84CE6E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF033851-C411-408F-9107-916CE84CE6E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF033851-C411-408F-9107-916CE84CE6E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A5B86E-9256-416D-9AA7-8B549A4701DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A5B86E-9256-416D-9AA7-8B549A4701DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A5B86E-9256-416D-9AA7-8B549A4701DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A5B86E-9256-416D-9AA7-8B549A4701DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

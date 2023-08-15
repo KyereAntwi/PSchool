@@ -34,7 +34,7 @@ public static class StartupExtensions
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "GloboTicket Ticket Management API");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "PSchool System");
             });
         }
 
