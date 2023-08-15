@@ -1,41 +1,56 @@
 ﻿using PSchool.Application.Contracts;
+using PSchool.Persistence.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace PSchool.Persistence.Repositories;
 
 public class BaseRepository<T> : IAsyncRepository<T> where T : class
 {
-    public Task<T> AddAsync(T entity)
+    private readonly SchoolDbContext _dbContext;
+
+    public BaseRepository(SchoolDbContext dbContext)
     {
-        throw new NotImplementedException();
+        _dbContext = dbContext;
     }
 
-    public Task DeleteAsync(T entity)
+    public async Task<T> AddAsync(T entity)
     {
-        throw new NotImplementedException();
+        await _dbContext.Set<T>().AddAsync(entity);
+        await _dbContext.SaveChangesAsync();
+
+        return entity;
     }
 
-    public Task<T?> GetByIdAsync(Guid id)
+    public async Task DeleteAsync(T entity)
     {
-        throw new NotImplementedException();
+        _dbContext.Set<T>().Remove(entity);
+        await _dbContext.SaveChangesAsync();
     }
 
-    public Task<IReadOnlyList<T>> GetPagedResponseAsync(int page, int size)
+    public async Task<T?> GetByIdAsync(Guid id)
     {
-        throw new NotImplementedException();
+        T? t = await _dbContext.Set<T>().FindAsync(id);
+        return t;
     }
 
-    public Task<IReadOnlyList<T>> ListAllAsync()
+    public async Task<IReadOnlyList<T>> GetPagedResponseAsync(int page, int size)
     {
-        throw new NotImplementedException();
+        return await _dbContext.Set<T>().Skip((page - 1) * size).Take(size).AsNoTracking().ToListAsync();
     }
 
-    public Task SaveChangesAsync()
+    public async Task<IReadOnlyList<T>> ListAllAsync()
     {
-        throw new NotImplementedException();
+        return await _dbContext.Set<T>().ToListAsync();
     }
 
-    public Task UpdateAsync(T entity)
+    public async Task SaveChangesAsync()
     {
-        throw new NotImplementedException();
+        await _dbContext.SaveChangesAsync();
+    }
+
+    public async Task UpdateAsync(T entity)
+    {
+        _dbContext.Entry(entity).State = EntityState.Modified;
+        await _dbContext.SaveChangesAsync();
     }
 }
