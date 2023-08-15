@@ -11,7 +11,7 @@ public static class PersistenceServicesRegistration
 {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<SchoolDbContext>(options => options.UseSqlite("Data Source=PSChool.db", b => b.MigrationsAssembly("PSChool.Presentation.WebApi")));
+        services.AddDbContext<SchoolDbContext>(options => options.UseSqlite("Data Source=PSChool.db", b => b.MigrationsAssembly("PSchool.Presentation.WepApi")));
 
         services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
         services.AddScoped<IStudentRepository, StudentRepository>();
