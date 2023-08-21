@@ -1,0 +1,18 @@
+﻿<MudCard>
+    <MudCardHeader>
+        <CardHeaderAvatar>
+            <MudAvatar Color="Color.Secondary">@Title[0]</MudAvatar>
+        </CardHeaderAvatar>
+        <CardHeaderContent>
+            <MudText Typo="Typo.body1">@Title</MudText>
+            <MudText Typo="Typo.body2">@Detail</MudText>
+        </CardHeaderContent>
+    </MudCardHeader>
+</MudCard>
+
+
+@code {
+    [Parameter] public string? Title { get; set; }
+    [Parameter] public string? Detail { get; set; }
+}
+

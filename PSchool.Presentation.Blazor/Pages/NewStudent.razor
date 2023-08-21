@@ -1,0 +1,46 @@
+﻿@page "/NewStudent/{parentId}"
+@page "/UpdateStudent/{studentId}"
+
+<PageTitle>@Title</PageTitle>
+
+<MudPaper Elevation="25">
+    <MudToolBar>
+        <MudIconButton Class="mr-5" Icon="@Icons.Material.Outlined.ArrowBack" Title="Go baack to parents list" Href="/" />
+        <MudText Typo="Typo.h6">@Title</MudText>
+
+    </MudToolBar>
+</MudPaper>
+
+<MudContainer>
+    <EditForm Model="@Student" OnValidSubmit="OnValidSubmit">
+
+        <DataAnnotationsValidator />
+
+        <MudGrid Class="mt-5">
+            <MudItem xs="12">
+                <MudCard>
+                    <MudCardContent>
+                        <MudTextField Label="Parent Id" HelperText="Read only"
+                                      @bind-Value="parentId" ReadOnly="true" Disabled="true" />
+
+                        <MudTextField Label="First name" HelperText="Cannot be empty"
+                                      @bind-Value="Student.FirstName" For="@(() => Student.FirstName)" />
+
+                        <MudTextField Label="Last name" HelperText="Cannot be empty" Class="mt-3"
+                                      @bind-Value="Student.LastName" For="@(() => Student.LastName)" />
+
+                        <MudTextField Label="Email" HelperText="CCannot be empty" Class="mt-3"
+                                      @bind-Value="Student.Email" For="@(() => Student.Email)" InputType="InputType.Email" />
+
+                        <MudTextField Label="Username" Class="mt-3"
+                                      @bind-Value="Student.Username" For="@(() => Student.Username)" />
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Submit Information</MudButton>
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>
+        </MudGrid>
+
+    </EditForm>
+</MudContainer>

@@ -1,0 +1,58 @@
+﻿@page "/Students"
+
+<PageTitle>Students List</PageTitle>
+
+<MudPaper Elevation="25">
+    <MudToolBar>
+        <MudText Typo="Typo.h6">All student list</MudText>
+        <MudSpacer />
+
+        <StudentFilterByParentForm OnParentIdChanged="filterStudentsListByParent"/>
+
+        <MudSpacer />
+        <MudAlert Severity="Severity.Info">To register a new student use the <NavLink href="/">parent list page</NavLink>. <b>All student must have a parenet</b></MudAlert>
+</MudToolBar>
+</MudPaper>
+
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-5">
+@if (loading)
+{
+    <MudSkeleton />
+    <MudSkeleton />
+    <MudSkeleton />
+    <MudSkeleton />
+    <MudSkeleton />
+    <MudSkeleton />
+    <MudSkeleton />
+    <MudSkeleton />
+}
+else
+{
+    if (StudentList.Count() > 0)
+    {
+        <MudDataGrid T="StudentVm" Items="@StudentList" Filterable="true" SortMode="@SortMode.None" Groupable="false">
+            <Columns>
+                <PropertyColumn Property="x => x.FirstName" Title="First Name" />
+                <PropertyColumn Property="x => x.LastName" Title="Last Name" />
+                <PropertyColumn Property="x => x.Username" Title="Username" />
+                <PropertyColumn Property="x => x.Email" Title="Email" />
+
+                <TemplateColumn CellClass="d-flex justify-end">
+                    <CellTemplate>
+                        <MudStack Row>
+                            <MudIconButton Icon="@Icons.Material.Filled.SupervisedUserCircle" OnClick="() => NavigateToParentPage(context.Item.ParentId)" Title="View parent information" aria-label="View parent information"></MudIconButton>
+                            <MudIconButton Icon="@Icons.Material.Filled.Edit" OnClick="() => UpdateStudentDetials(context.Item.Id)" aria-label="Update student" Title="Update student information"></MudIconButton>
+                            <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="() => onDeleteParent(context.Item.Id)" Color="Color.Warning" aria-label="Delete student" Title="Delete student information"></MudIconButton>
+                        </MudStack>
+                    </CellTemplate>
+                </TemplateColumn>
+            </Columns>
+        </MudDataGrid>
+    }
+    else
+    {
+        <MudAlert Severity="Severity.Info">There are no students to display at the moment</MudAlert>
+    }
+}
+</MudContainer>

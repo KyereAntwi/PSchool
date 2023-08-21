@@ -1,0 +1,9 @@
+﻿
+<MudSelect @bind-Value="SelectedId" T="Guid" Label="Filter student list by parent" AnchorOrigin="Origin.BottomCenter">
+    @foreach (var parent in ParentsList)
+    {
+        <MudSelectItem Value="@(parent.Id)">@parent.ToString()</MudSelectItem>
+    }
+</MudSelect>
+
+<MudIconButton OnClick="ParentIdChanged" Icon="@Icons.Material.Filled.Search" aria-label="Filter list"></MudIconButton>

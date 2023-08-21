@@ -1,0 +1,55 @@
+﻿@page "/"
+@page "/parents"
+
+<PageTitle>Parents List</PageTitle>
+
+<MudPaper Elevation="25">
+    <MudToolBar>
+        <MudText Typo="Typo.h6">All parent list</MudText>
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Outlined.Add" Title="Add a new parent" Href="/New-Parent"/>
+    </MudToolBar>
+</MudPaper>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-5">
+    @if (loading)
+    {
+        <MudSkeleton />
+        <MudSkeleton />
+        <MudSkeleton />
+        <MudSkeleton />
+        <MudSkeleton />
+        <MudSkeleton />
+        <MudSkeleton />
+        <MudSkeleton />
+    }
+    else
+    {
+        if (ParentsList.Count() > 0)
+        {
+            <MudDataGrid T="ParentVm" Items="@ParentsList" Filterable="true" SortMode="@SortMode.None" Groupable="false">
+                <Columns>
+                    <PropertyColumn Property="x => x.FirstName" Title="First Name" />
+                    <PropertyColumn Property="x => x.LastName" Title="Last Name" />
+                    <PropertyColumn Property="x => x.Username" Title="Username" />
+                    <PropertyColumn Property="x => x.Email" Title="Email" />
+
+                    <TemplateColumn CellClass="d-flex justify-end">
+                        <CellTemplate>
+                            <MudStack Row>
+                                <MudIconButton Icon="@Icons.Material.Filled.Expand" OnClick="() => ViewDetailPage(context.Item.Id)" aria-label="View details" Title="View parent details"></MudIconButton>
+                                <MudIconButton Icon="@Icons.Material.Filled.School" OnClick="() => RegisterStudentForParent(context.Item.Id)" Color="Color.Info" aria-label="Register a student under parent" Title="Register student under parent"></MudIconButton>
+                                <MudIconButton Icon="@Icons.Material.Filled.Edit" OnClick="() => UpdateParentDetails(context.Item.Id)" aria-label="Update parent"></MudIconButton>
+                                <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="() => onDeleteParent(context.Item.Id)" Color="Color.Warning" aria-label="Delete parent"></MudIconButton>
+                            </MudStack>
+                        </CellTemplate>
+                    </TemplateColumn>
+                </Columns>
+            </MudDataGrid>
+        }
+        else
+        {
+            <MudAlert Severity="Severity.Info">There are no parents to display at the moment</MudAlert>
+        }
+    }
+</MudContainer>

@@ -1,0 +1,58 @@
+﻿@page "/parents/{parentId}"
+
+<PageTitle>@Parent?.FirstName Detail Page</PageTitle>
+
+<MudPaper Elevation="25">
+    <MudToolBar>
+        <MudIconButton Class="mr-5" Icon="@Icons.Material.Outlined.ArrowBack" Title="Go baack to parents list" Href="/" />
+
+        @if (Parent is null)
+        {
+            <MudSkeleton />
+        }
+        else
+        {
+            <MudAvatar Color="Color.Secondary" Class="mr-3">@Parent.FirstName[0]</MudAvatar>
+            <MudText Typo="Typo.h6">@Fullname</MudText>
+        }
+
+        <MudSpacer />
+
+        <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined">
+            <MudIconButton Icon="@Icons.Material.Filled.Delete" OnClick="DeleteParent" Title="Delete this parent permanently"></MudIconButton>
+            <MudButton StartIcon="@Icons.Material.Filled.School" OnClick="RegisterStudent" IconColor="Color.Warning">Register a new student under parent</MudButton>
+        </MudButtonGroup>
+
+    </MudToolBar>
+</MudPaper>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-5">
+    <MudText Typo="Typo.h3">Students registered under parent</MudText>
+
+    <MudDivider />
+
+    @if (loading)
+    {
+        <MudSkeleton />
+        <MudSkeleton />
+    }
+    else
+    {
+        if (Students?.Count() > 0)
+        {
+            <MudDataGrid T="StudentVm" Items="@Students" Filterable="false" SortMode="@SortMode.None" Groupable="false">
+                <Columns>
+                    <PropertyColumn Property="x => x.FirstName" Title="First Name" />
+                    <PropertyColumn Property="x => x.LastName" Title="Last Name" />
+                    <PropertyColumn Property="x => x.Username" Title="Username" />
+                    <PropertyColumn Property="x => x.Email" Title="Email" />
+                </Columns>
+            </MudDataGrid>
+        }
+        else
+        {
+            <MudAlert Severity="Severity.Info">There are no students to display at the moment. You can start by adding the first one <MudButton ButtonType="ButtonType.Button" Size="Size.Small" OnClick="RegisterStudent">Here!</MudButton></MudAlert>
+        }
+    }
+</MudContainer>
+

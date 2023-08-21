@@ -38,13 +38,14 @@ public static class StartupExtensions
             });
         }
 
+        app.UseCors("Open");
         app.UseHttpsRedirection();
 
         //app.UseRouting();
 
         app.UseCustomExceptionHandler();
 
-        app.UseCors("Open");
+        
         app.UseAuthorization();
         app.MapControllers();
 

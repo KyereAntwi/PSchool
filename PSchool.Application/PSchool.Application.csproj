@@ -12,6 +12,7 @@
     <None Remove="Features\Parents\" />
     <None Remove="Features\Parents\Commands\" />
     <None Remove="Features\Parents\Requests\" />
+    <None Remove="Features\Parents\Querries\GetAllParents\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Contracts\" />
@@ -19,6 +20,7 @@
     <Folder Include="Features\" />
     <Folder Include="Features\Parents\" />
     <Folder Include="Features\Parents\Commands\" />
+    <Folder Include="Features\Parents\Querries\GetAllParents\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PSchool.Domain\PSchool.Domain.csproj" />

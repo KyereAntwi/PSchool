@@ -23,7 +23,7 @@ public class StudentsController : ControllerBase
 
     [HttpGet("")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult> GetStudentsList([FromQuery] int pageSize, [FromQuery] int page)
+    public async Task<ActionResult> GetStudentsList([FromQuery] int pageSize = 20, [FromQuery] int page = 1)
     {
         var studentsListDto = await _mediator.Send(new GetStudentsListQuery()
         {

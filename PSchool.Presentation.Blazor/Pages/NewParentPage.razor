@@ -1,0 +1,43 @@
+﻿@page "/New-Parent"
+@page "/New-Parent/{parentId}"
+
+<PageTitle>@Title</PageTitle>
+
+<MudPaper Elevation="25">
+    <MudToolBar>
+        <MudIconButton Class="mr-5" Icon="@Icons.Material.Outlined.ArrowBack" Title="Go baack to parents list" Href="/" />
+        <MudText Typo="Typo.h6">@Title</MudText>
+
+    </MudToolBar>
+</MudPaper>
+
+<MudContainer>
+    <EditForm Model="@Parent" OnValidSubmit="OnValidSubmit">
+
+        <DataAnnotationsValidator />
+
+        <MudGrid Class="mt-5">
+            <MudItem xs="12">
+                <MudCard>
+                    <MudCardContent>
+                        <MudTextField Label="First name" HelperText="Cannot be empty"
+                                      @bind-Value="Parent.FirstName" For="@(() => Parent.FirstName)" />
+
+                        <MudTextField Label="Last name" HelperText="Cannot be empty" Class="mt-3"
+                                      @bind-Value="Parent.LastName" For="@(() => Parent.LastName)" />
+
+                        <MudTextField Label="Email" HelperText="CCannot be empty" Class="mt-3"
+                                      @bind-Value="Parent.Email" For="@(() => Parent.Email)" InputType="InputType.Email" />
+
+                        <MudTextField Label="Username" Class="mt-3"
+                                      @bind-Value="Parent.Username" For="@(() => Parent.Username)" />
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Submit Information</MudButton>
+                    </MudCardActions>
+                </MudCard>
+            </MudItem>
+        </MudGrid>
+
+    </EditForm>
+</MudContainer>

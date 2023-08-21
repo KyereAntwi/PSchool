@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using PSchool.Application.Features.Parents.Commands.CreateParent;
 using PSchool.Application.Features.Parents.Commands.DeleteParent;
 using PSchool.Application.Features.Parents.Commands.UpdateParent;
+using PSchool.Application.Features.Parents.Querries.GetAllParents;
 using PSchool.Application.Features.Parents.Querries.GetParentDetail;
 using PSchool.Application.Features.Parents.Querries.GetParentsList;
 
@@ -23,7 +24,7 @@ public class ParentsController : ControllerBase
 
     [HttpGet()]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult> GetAllParents([FromQuery] int pageSize = 10, [FromQuery] int page = 1)
+    public async Task<ActionResult> GetAllParentsPaged([FromQuery] int pageSize = 20, [FromQuery] int page = 1)
     {
         var parentDtos = await _mediator.Send(new GetParentsListQuery()
         {
@@ -32,6 +33,14 @@ public class ParentsController : ControllerBase
         });
 
         return Ok(parentDtos);
+    }
+
+    [HttpGet("all")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult> GetAllParents()
+    {
+        var parentsDtos = await _mediator.Send(new GetAllParentsQuery());
+        return Ok(parentsDtos);
     }
 
     [HttpGet("{parentId}")]
@@ -55,7 +64,7 @@ public class ParentsController : ControllerBase
     }
 
     [HttpDelete("{parentId}")]
-    public async Task<ActionResult> DeleteParent([FromHeader] Guid parentId)
+    public async Task<ActionResult> DeleteParent([FromRoute] Guid parentId)
     {
         await _mediator.Send(new DeleteParentCommand() { ParentId = parentId });
         return NoContent();
